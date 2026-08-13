@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Resultados brutos de benchmark (geralmente grandes/específicos da máquina)
+# Descomente se quiser versionar os CSVs:
+# results/*.csv
+
+*.log
+.vscode/
+.idea/
