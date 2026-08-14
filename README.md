@@ -32,8 +32,27 @@ hw-bench/
 ## Requisitos
 
 - Python 3.11+
-- Windows: [LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor) rodando (para leitura de sensores via `pythonnet`)
 - `pip install -r requirements.txt`
+
+### Windows — leitura de sensores (clock, temperatura, power)
+
+Para os benchmarks capturarem clock/temperatura/power da CPU (essencial para detectar throttling térmico), é necessário instalar:
+
+1. **[LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor/releases)** — baixe `LibreHardwareMonitor.zip` (não o `.NET.10.zip`, que é uma variante para outro runtime) e extraia em `C:\Tools\LibreHardwareMonitor\`
+2. **PawnIO** (driver necessário para acesso de baixo nível ao hardware) — abra `LibreHardwareMonitor.exe` **como administrador** na primeira vez; ele mesmo vai oferecer para instalar o PawnIO. Se não oferecer, instale manualmente pelo instalador embutido no próprio projeto do LHM.
+3. **Desbloqueie a DLL** (o Windows costuma marcar arquivos baixados como bloqueados, o que impede o carregamento):
+   ```powershell
+   Get-ChildItem -Path "C:\Tools\LibreHardwareMonitor" -Recurse | Unblock-File
+   ```
+4. **Sempre rode os scripts em um PowerShell aberto como Administrador** — sem privilégio elevado, os sensores de Clock/Temperature/Power retornam vazios (só o uso de CPU/RAM funciona sem admin).
+
+Se o caminho de instalação for diferente de `C:\Tools\LibreHardwareMonitor\`, ajuste a constante `LHM_DLL_PATH` em `sensors/lhm_reader.py`.
+
+**Sem esses passos, os benchmarks ainda rodam normalmente** (CPU, RAM, disco), só ficam sem os dados de clock/temperatura/throttling — o script tem fallback gracioso e não quebra.
+
+### Linux — leitura de sensores
+
+Ainda não implementado (`sensors/lhm_reader.py` usa `lm-sensors`/`/sys/class/thermal` como próximo passo — ver TODO no código).
 
 ## Uso básico
 
