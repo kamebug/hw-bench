@@ -84,4 +84,5 @@ Cada benchmark segue o padrão:
 
 | Nome | CPU | RAM | Armazenamento | Notas |
 |---|---|---|---|---|
-| _(preencher)_ | | | | |
+| `desktop` | AMD Ryzen 9 9950X3D | 64GB DDR5-6000 (2×32GB, dual-channel, AMD EXPO) Corsair Vengeance | Samsung 990 PRO 2TB NVMe Gen4 + Acer Predator GM7000 2TB NVMe | GPU: RTX 5080 16GB. Mobo: Gigabyte X870E Aorus Pro. PSU: Corsair HX1200i. Refrigeração: AIO Corsair iCUE LINK Titan 360 RX + múltiplas fans (Arctic P12/P14, LianLi UNI FAN). Gabinete: Thermaltake The Tower 600. |
+| `notebook` | Intel Core i7-8550U | 16GB DDR4-2133 (2×8GB, dual-channel) SK Hynix | Toshiba/Kioxia KXG50ZNV1T02 1TB NVMe SSD | GPU integrada: Intel UHD Graphics 620. TDP base 15W (mobile, 4 núcleos/8 threads). |
